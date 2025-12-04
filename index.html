@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gamer Vibes</title>
+  <style>
+    body { margin:0; height:100vh; background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); 
+           display:flex; align-items:center; justify-content:center; font-family: 'Arial', sans-serif; }
+    h1 { color: #00ff88; font-size: 5rem; text-shadow: 0 0 20px #00ff88; margin-bottom: 50px; }
+    .launch-btn {
+      padding: 25px 80px; font-size: 2.5rem; background: #00ff41; color: black;
+      border: none; border-radius: 20px; cursor: pointer; box-shadow: 0 0 40px #00ff4150;
+      transition: all 0.3s; font-weight: bold;
+    }
+    .launch-btn:hover { transform: scale(1.1); box-shadow: 0 0 60px #00ff41; }
+  </style>
+</head>
+<body>
+
+  <div style="text-align:center">
+    <h1>GAMER VIBES</h1>
+    <button class="launch-btn" onclick="launch()">
+      LAUNCH 🚀
+    </button>
+  </div>
+
+  <audio id="whoosh" src="whoosh.mp3"></audio>
+
+  <script>
+    function launch() {
+      document.getElementById('whoosh').play();
+      setTimeout(() => { window.location.href = 'hub.html'; }, 500);
+    }
+  </script>
+
+</body>
+</html>
