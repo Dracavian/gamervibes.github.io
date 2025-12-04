@@ -13,33 +13,88 @@
     .card h2 { color:#00ff88; margin-top:0; }
     a { color:#00ffff; text-decoration:none; font-size:1.2rem; }
     a:hover { text-decoration:underline; }
+    iframe, img { border-radius:10px; }
   </style>
 </head>
 <body>
+
 <header>
   <h1>GAMER VIBES • HUB</h1>
-  <p>Welcome Tenno & Traveler ✦ Grind ✦ Chill ✦ Achieve</p>
+  <p>Welcome Tenno & Traveler — Grind — Chill — Achieve</p>
 </header>
+
 <div class="grid">
+
+  <!-- WARFRAME CARD -->
   <div class="card">
-    <h2>⚔️ WARFRAME (my #1)</h2>
+    <h2>Warframe (my #1)</h2>
     <p>Best free game ever.</p>
     <a href="https://www.warframe.com" target="_blank">Play Warframe</a><br>
     <a href="https://warframe.fandom.com" target="_blank">Wiki</a>
   </div>
+
+  <!-- GENSHIN CARD -->
   <div class="card">
-    <h2>✨ GENSHIN IMPACT</h2>
+    <h2>Genshin Impact</h2>
     <a href="https://genshin.hoyoverse.com" target="_blank">Play Genshin</a><br>
     <a href="https://paimon.moe" target="_blank">Wish Tracker</a>
   </div>
+
+  <!-- KICK CARD -->
   <div class="card">
-    <h2>🏆 PLAYSTATION TROPHIES</h2>
-    <a href="https://psnprofiles.com" target="_blank">My PSN Profile</a>
+    <h2>Discover on Kick</h2>
+    <p>Live streams for free games</p>
+    <a href="https://kick.com/category/warframe" target="_blank" style="display:block;padding:15px;margin:10px 0;background:#00ff41;color:black;font-weight:bold;border-radius:12px;text-align:center;">Warframe Streams</a>
+    <a href="https://kick.com/category/genshin-impact" target="_blank" style="display:block;padding:15px;margin:10px 0;background:#00ff41;color:black;font-weight:bold;border-radius:12px;text-align:center;">Genshin Streams</a>
   </div>
+
+  <!-- NEW: TROPHY ARENA CARD (delete everything between these lines if you ever want to remove it) -->
   <div class="card">
-    <h2>🎮 LIVE ON KICK</h2>
-    <a href="https://kick.com/yourname" target="_blank">Watch on Kick</a>
+    <h2>GAMER VIBES TROPHY ARENA</h2>
+    <p>Type any PSN ID → instant trophy card + global rank</p>
+    <input id="psn-id" placeholder="Enter PSN ID" style="width:100%;padding:12px;margin:10px 0;border-radius:8px;border:1px solid #00ff88;background:#000;color:#fff;font-size:1.1rem;">
+    <img id="trophy-card" style="width:100%;display:none;margin:10px 0;" alt="Trophy Card">
+    <a id="profile-link" target="_blank" style="display:none;color:#00ff88;font-size:1.2rem;">View Full Profile →</a>
+    <h3 style="margin-top:20px;">Global Top Hunters</h3>
+    <iframe src="https://psntrophyleaders.com/leaderboard/main" width="100%" height="400" frameborder="0"></iframe>
   </div>
+  <!-- END OF TROPHY ARENA CARD -->
+
+  <!-- NEW: WARFRAME NIGHTWAVE & SORTIES -->
+  <div class="card">
+    <h2>Warframe Nightwave & Sorties (Live)</h2>
+    <iframe src="https://deathsnacks.com/wf/embed.html" width="100%" height="340" frameborder="0"></iframe>
+  </div>
+
+  <!-- NEW: GENSHIN DAILY CHECK-IN -->
+  <div class="card">
+    <h2>Genshin Daily Rewards</h2>
+    <a href="https://webstatic-sea.mihoyo.com/ys/event/signin-sea-v3/index.html?act_id=e202102251931481" target="_blank"
+       style="display:inline-block;padding:18px 40px;background:#00ff88;color:black;font-weight:bold;border-radius:12px;font-size:1.3rem;">
+       Claim Primos & Resin Now
+    </a>
+  </div>
+
 </div>
+
+<script>
+  const input = document.getElementById('psn-id');
+  const card = document.getElementById('trophy-card');
+  const link = document.getElementById('profile-link');
+  input.addEventListener('input', (e) => {
+    const id = e.target.value.trim();
+    if (id) {
+      card.src = `https://card.psnprofiles.com/1/${id}.png`;
+      card.style.display = 'block';
+      link.href = `https://psnprofiles.com/${id}`;
+      link.textContent = `View ${id}'s Full Profile & Rank →`;
+      link.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+      link.style.display = 'none';
+    }
+  });
+</script>
+
 </body>
 </html>
